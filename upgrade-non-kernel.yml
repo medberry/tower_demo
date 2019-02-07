@@ -1,6 +1,7 @@
 ---
 - name: Upgrade Non Kernel Packages
   hosts: centos
+  become: true
 
   tasks:
   - name: upgrade all but kernel packages
