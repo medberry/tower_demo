@@ -1,6 +1,7 @@
 ---
 - name: Upgrade Packages
   hosts: centos
+  become: true
 
   tasks:
   - name: upgrade all
