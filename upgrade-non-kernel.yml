@@ -1,0 +1,10 @@
+---
+- name: Upgrade Non Kernel Packages
+  hosts: centos
+
+  tasks:
+  - name: upgrade all but kernel packages
+    yum:
+      name: '*'
+      state: latest
+      exclude: kernel*
