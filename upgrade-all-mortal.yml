@@ -1,0 +1,9 @@
+---
+- name: Upgrade Packages
+  hosts: centos
+
+  tasks:
+  - name: upgrade all
+    yum:
+      name: '*'
+      state: latest
