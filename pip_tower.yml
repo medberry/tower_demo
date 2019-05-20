@@ -5,8 +5,9 @@
 
   vars:
     pypi_list:
-    - google-auth
-    - cachetools
+    - wheel
+#    - google-auth
+#    - cachetools
 
   tasks:
   - name: Install pypi packages into ansible venv
