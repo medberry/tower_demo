@@ -1,7 +1,7 @@
 ---
 - name: Upgrade ansible venv on tower nodes
   hosts: tower
-  become: yes
+  #become: yes
 
   vars:
     pypi_list:
@@ -14,3 +14,4 @@
       name: '{{ pypi_list }}'
       virtualenv: "/var/lib/awx/venv/ansible"
       umask: "0022"
+    become: true
