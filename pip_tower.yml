@@ -1,0 +1,16 @@
+---
+- name: Upgrade ansible venv on tower nodes
+  hosts: tower
+  become: yes
+
+  vars:
+    pypi_list:
+    - google-auth
+    - cachetools
+
+  tasks:
+  - name: Install pypi packages into ansible venv
+    pip:
+      name: '{{ pypi_list }}'
+      virtualenv: "/var/lib/awx/venv/ansible"
+      umask: "0022"
