@@ -1,0 +1,11 @@
+---
+- name: Upgrade openssh Packages
+  hosts: all
+  become: true
+
+  tasks:
+  - name: upgrade all openssh rpms
+    yum:
+      name: 'openssh*'
+      state: latest
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
