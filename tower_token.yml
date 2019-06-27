@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+
+  vars:
+    user: %your account%
+    password: %your password%
+
+  tasks:
+    - include_vars: credential.yml
+    - name: get authtoken
+      uri:
+        url: https://%your tower%/api/v1/authtoken/
+        method: POST
+        body: '{ "username": "", "password": "" }'
+        body_format: json
+        validate_certs: no
+      register: authtoken
+
+    - name: get projects
+      uri:
+        url: https://%your tower%/api/v1/projects/
+        method: GET
+        return_content: yes
+        headers:
+          Authorization: "Token "
+        validate_certs: no
+      register: projects
+
+    - debug:
+         vars: projects
