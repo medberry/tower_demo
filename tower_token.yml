@@ -2,23 +2,26 @@
 - hosts: localhost
 
   vars:
-    user: %your account%
-    password: %your password%
+    user: mortal
+    password: r3dh4t1!
 
   tasks:
-    - include_vars: credential.yml
+#    - include_vars: credential.yml
     - name: get authtoken
       uri:
-        url: https://%your tower%/api/v1/authtoken/
+        url: https://localhost/api/v1/authtoken/
         method: POST
-        body: '{ "username": "", "password": "" }'
+        body: '{ "username": "{{ user }}", "password": "{{ password }}" }'
         body_format: json
         validate_certs: no
       register: authtoken
+    - name: display authtoken
+      debug:
+        vars: authtoken
 
     - name: get projects
       uri:
-        url: https://%your tower%/api/v1/projects/
+        url: https://localhost/api/v1/projects/
         method: GET
         return_content: yes
         headers:
