@@ -15,4 +15,4 @@
     apt:
       name: 'python*'
       state: latest
-    when: ansible_distribution == 'Debian' or ansible_distribition == 'Ubuntu'
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
