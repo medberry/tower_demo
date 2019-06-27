@@ -1,0 +1,18 @@
+---
+- name: Upgrade Python Packages
+  hosts: all
+  # should only be RPM style machines
+  become: true
+
+  tasks:
+  - name: upgrade all python rpms
+    yum:
+      name: 'python*'
+      state: latest
+    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+  - name: upgrade all python debs
+    apt:
+      name: 'python*'
+      state: latest
+    when: ansible_distribution == 'Debian' or ansible_distribition == 'Ubuntu'
