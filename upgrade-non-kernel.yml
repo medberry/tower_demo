@@ -1,6 +1,7 @@
 ---
 - name: Upgrade Non Kernel Packages
-  hosts: centos
+  hosts: all
+  # should only be RPM style machines
   become: true
 
   tasks:
